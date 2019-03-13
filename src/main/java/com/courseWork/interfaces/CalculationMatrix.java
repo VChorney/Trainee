@@ -1,5 +1,8 @@
 package com.courseWork.interfaces;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface CalculationMatrix {
 
     Double[][] transposing(Double[][] matrix);

@@ -52,7 +52,7 @@ class MatrixTest {
     }
 
     @Test
-    void transposing() {
+    void testTransposing() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{1.0, 3.0}, {2.0, 4.0}};
         final Double[][] result = matrix.transposing(first);
@@ -60,7 +60,7 @@ class MatrixTest {
     }
 
     @Test
-    void multiplicationByNumber() {
+    void testMultiplicationByNumber() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{2.0, 4.0}, {6.0, 8.0}};
         final Double[][] result = matrix.multiplicationByNumber(first, 2.0);
@@ -69,7 +69,7 @@ class MatrixTest {
     }
 
     @Test
-    void expoonent() {
+    void testExpoonent() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{7.0, 10.0}, {15.0, 22.0}};
         final Double[][] result = matrix.expoonent(2, first);
@@ -77,7 +77,7 @@ class MatrixTest {
     }
 
     @Test
-    void determinate() {
+    void testDeterminate() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double result = matrix.determinate(2, first);
         assertEquals(-2.0, result.doubleValue());
@@ -85,7 +85,7 @@ class MatrixTest {
     }
 
     @Test
-    void revers() {
+    void testRevers() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{-2.0, 1.0}, {1.5, -0.5}};
         final Double[][] result = matrix.revers(first);

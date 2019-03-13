@@ -2,8 +2,12 @@ package com.courseWork.calculationClasses;
 
 import com.courseWork.exeptions.IllegalSizeExeption;
 import com.courseWork.interfaces.CalculationMatrix;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Matrix implements CalculationMatrix {
+    public Matrix() {
+    }
 
     private enum Operation {PLUS, MINUS}
 
