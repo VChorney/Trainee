@@ -3,7 +3,9 @@ package com.courseWork.calculationClasses;
 import com.courseWork.exeptions.IllegalSizeExeption;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatrixTest {
 
@@ -72,14 +74,14 @@ class MatrixTest {
     void testExpoonent() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{7.0, 10.0}, {15.0, 22.0}};
-        final Double[][] result = matrix.expoonent(2, first);
+        final Double[][] result = matrix.expoonent(first, 2);
         assertArrayEquals(second, result);
     }
 
     @Test
     void testDeterminate() {
-        final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
-        final Double result = matrix.determinate(2, first);
+        final Double[][] first = {{1.0, 2.0,3.0}, {4.0, 5.0,6.0},{7.0,8.0,9.0}};
+        final Double result = matrix.determinate(first,3);
         assertEquals(-2.0, result.doubleValue());
 
     }

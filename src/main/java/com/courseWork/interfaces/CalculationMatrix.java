@@ -1,19 +1,20 @@
 package com.courseWork.interfaces;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public interface CalculationMatrix {
+
+    Double[][] plus(Double[][] firstMatrix, Double[][] secondMatrix);
+
+    Double[][] minus(Double[][] firstMatrix, Double[][] secondMatrix);
 
     Double[][] transposing(Double[][] matrix);
 
-    Double[][] multiplicationByNumber(Double[][] matrix, final Double NUMBER);
+    Double[][] multiplicationByNumber(Double[][] matrix, Double number);
 
-    Double[][] multiplication(final Double[][] firstMatrix, final Double[][] secondMatrix);
+    Double[][] multiplication(Double[][] firstMatrix, Double[][] secondMatrix);
 
-    Double[][] expoonent(final int EXPONENT, Double[][] matrix);
+    Double[][] expoonent(Double[][] matrix, int exponent);
 
-    Double determinate(final int SIZE, Double[][] matrix);
+    Double determinate(Double[][] matrix, int size);
 
     Double[][] revers(Double[][] matrix);
 

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Matrix implements CalculationMatrix {
-    public Matrix() {
-    }
 
     private enum Operation {PLUS, MINUS}
 
@@ -25,10 +23,12 @@ public class Matrix implements CalculationMatrix {
         return firstMatrix;
     }
 
+    @Override
     public Double[][] plus(Double[][] firstMatrix, Double[][] secondMatrix) {
         return plusAndMinus(firstMatrix, secondMatrix, Operation.PLUS);
     }
 
+    @Override
     public Double[][] minus(Double[][] firstMatrix, Double[][] secondMatrix) {
         return plusAndMinus(firstMatrix, secondMatrix, Operation.MINUS);
     }
@@ -66,19 +66,19 @@ public class Matrix implements CalculationMatrix {
     }
 
     @Override
-    public Double[][] multiplicationByNumber(Double[][] matrix, Double NUMBER) {
+    public Double[][] multiplicationByNumber(Double[][] matrix, Double number) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                matrix[i][j] = matrix[i][j] * NUMBER;
+                matrix[i][j] = matrix[i][j] * number;
             }
         }
         return matrix;
     }
 
     @Override
-    public Double[][] expoonent(int EXPONENT, Double[][] matrix) {
+    public Double[][] expoonent(Double[][] matrix, int exponent) {
         Double[][] buffer = matrix;
-        for (int t = 1; t < EXPONENT; t++) {
+        for (int t = 1; t < exponent; t++) {
             matrix = multiplication(buffer, matrix);
 
         }
@@ -86,20 +86,20 @@ public class Matrix implements CalculationMatrix {
     }
 
     @Override
-    public Double determinate(int SIZE, Double[][] matrix) {
+    public Double determinate(Double[][] matrix, int size) {
         double determinate;
-        if (SIZE == 1) {
+        if (size == 1) {
             determinate = matrix[0][0];
 
-        } else if (SIZE == 2) {
+        } else if (size == 2) {
             determinate = matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
         } else {
             determinate = 0;
-            Double[][] buffer = new Double[SIZE][SIZE];
-            for (int k = 0; k < SIZE; k++) {
-                for (int i = 1; i < SIZE; i++) {
+            Double[][] buffer = new Double[size][size];
+            for (int k = 0; k < size; k++) {
+                for (int i = 1; i < size; i++) {
                     int j1 = 0;
-                    for (int j = 0; j < SIZE; j++) {
+                    for (int j = 0; j < size; j++) {
                         if (j == k) {
                             continue;
                         }
@@ -107,7 +107,7 @@ public class Matrix implements CalculationMatrix {
                         j1++;
                     }
                 }
-                determinate += Math.pow(-1.0, 1.0 + k + 1.0) * matrix[0][k] * determinate(SIZE - 1, buffer);
+                determinate += Math.pow(-1.0, 1.0 + k + 1.0) * matrix[0][k] * determinate(buffer, size - 1);
             }
         }
         return determinate;
@@ -135,7 +135,7 @@ public class Matrix implements CalculationMatrix {
                         }
                     }
                 }
-                united[i][j] = Math.pow(-1, i + j) * determinate(matrix.length - 1, minor);
+                united[i][j] = Math.pow(-1, i + j) * determinate(minor, matrix.length - 1);
             }
         }
         buffer = transposing(united);
@@ -144,7 +144,7 @@ public class Matrix implements CalculationMatrix {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
 
-                result[i][j] = buffer[i][j] / determinate(matrix.length, matrix);
+                result[i][j] = buffer[i][j] / determinate(matrix, matrix.length);
             }
         }
         return result;
