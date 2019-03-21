@@ -3,7 +3,9 @@ package com.courseWork.calculationClasses;
 import com.courseWork.exeptions.IllegalSizeExeption;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatrixTest {
 
@@ -52,7 +54,7 @@ class MatrixTest {
     }
 
     @Test
-    void transposing() {
+    void testTransposing() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{1.0, 3.0}, {2.0, 4.0}};
         final Double[][] result = matrix.transposing(first);
@@ -60,7 +62,7 @@ class MatrixTest {
     }
 
     @Test
-    void multiplicationByNumber() {
+    void testMultiplicationByNumber() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{2.0, 4.0}, {6.0, 8.0}};
         final Double[][] result = matrix.multiplicationByNumber(first, 2.0);
@@ -69,23 +71,23 @@ class MatrixTest {
     }
 
     @Test
-    void expoonent() {
+    void testExpoonent() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{7.0, 10.0}, {15.0, 22.0}};
-        final Double[][] result = matrix.expoonent(2, first);
+        final Double[][] result = matrix.expoonent(first, 2);
         assertArrayEquals(second, result);
     }
 
     @Test
-    void determinate() {
-        final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
-        final Double result = matrix.determinate(2, first);
+    void testDeterminate() {
+        final Double[][] first = {{1.0, 2.0,3.0}, {4.0, 5.0,6.0},{7.0,8.0,9.0}};
+        final Double result = matrix.determinate(first,3);
         assertEquals(-2.0, result.doubleValue());
 
     }
 
     @Test
-    void revers() {
+    void testRevers() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{-2.0, 1.0}, {1.5, -0.5}};
         final Double[][] result = matrix.revers(first);
