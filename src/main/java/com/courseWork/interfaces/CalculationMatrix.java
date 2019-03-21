@@ -8,7 +8,7 @@ public interface CalculationMatrix {
 
     Double[][] transposing(Double[][] matrix);
 
-    Double[][] multiplicationByNumber(Double[][] matrix, Double number);
+    Double[][] multiplicationByNumber(Double[][] matrix, Double multiplier);
 
     Double[][] multiplication(Double[][] firstMatrix, Double[][] secondMatrix);
 
@@ -19,6 +19,6 @@ public interface CalculationMatrix {
     Double[][] revers(Double[][] matrix);
 
     Double[] multiplicationByVector(Double[][] matrix, Double[] vector);
-
+    int pr();
 
 }

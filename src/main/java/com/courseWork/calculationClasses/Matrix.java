@@ -66,10 +66,10 @@ public class Matrix implements CalculationMatrix {
     }
 
     @Override
-    public Double[][] multiplicationByNumber(Double[][] matrix, Double number) {
+    public Double[][] multiplicationByNumber(Double[][] matrix, Double multiplier) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                matrix[i][j] = matrix[i][j] * number;
+                matrix[i][j] = matrix[i][j] * multiplier;
             }
         }
         return matrix;
@@ -161,5 +161,7 @@ public class Matrix implements CalculationMatrix {
         }
         return buffer;
     }
+    @Override
+    public int pr(){return 2;}
 }
 

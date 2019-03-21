@@ -1,22 +1,27 @@
 package com.courseWork.calculationClasses;
 
 import com.courseWork.exeptions.IllegalSizeExeption;
+import com.courseWork.interfaces.CalculationMatrix;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 class MatrixTest {
-
-    private Matrix matrix = new Matrix();
+    @Mock
+    CalculationMatrix matrix = mock(Matrix.class);
 
     @Test
     void testPlus() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{5.0, 6.0}, {7.0, 8.0}};
         final Double[][] third = {{6.0, 8.0}, {10.0, 12.0}};
+        when(matrix.plus(first,second)).thenReturn(third);
         final Double[][] result = matrix.plus(first, second);
+        verify(matrix).minus(first,second);
         assertArrayEquals(result, third);
     }
 
@@ -102,6 +107,12 @@ class MatrixTest {
         final Double[] third = {5.0, 11.0};
         final Double[] result = matrix.multiplicationByVector(first, second);
         assertArrayEquals(result, third);
+    }
+    @Test
+    void testPR(){
+        Matrix matrix1 = mock(Matrix.class);
+        when(matrix1.pr()).thenReturn(1);
+        assertEquals(2,matrix1.pr());
     }
 
 }
