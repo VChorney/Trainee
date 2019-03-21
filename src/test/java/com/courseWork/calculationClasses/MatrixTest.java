@@ -1,6 +1,7 @@
 package com.courseWork.calculationClasses;
 
 import com.courseWork.exeptions.IllegalSizeExeption;
+import com.courseWork.interfaces.CalculationMatrix;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatrixTest {
 
-    private Matrix matrix = new Matrix();
+    CalculationMatrix matrix = new Matrix();
 
     @Test
     void testPlus() {
@@ -48,7 +49,7 @@ class MatrixTest {
     @Test
     void testLegalSizeMatrix() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
-        final Double[][] second = {{5.0, 6.0}, {7.0, 8.0}};
+        final Double[][] second = {{5.0, 6.0}};
 
         assertThrows(IllegalSizeExeption.class, () -> matrix.multiplication(first, second));
     }
@@ -80,8 +81,8 @@ class MatrixTest {
 
     @Test
     void testDeterminate() {
-        final Double[][] first = {{1.0, 2.0,3.0}, {4.0, 5.0,6.0},{7.0,8.0,9.0}};
-        final Double result = matrix.determinate(first,3);
+        final Double[][] first = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        final Double result = matrix.determinate(first, 3);
         assertEquals(-2.0, result.doubleValue());
 
     }
@@ -103,5 +104,4 @@ class MatrixTest {
         final Double[] result = matrix.multiplicationByVector(first, second);
         assertArrayEquals(result, third);
     }
-
 }
