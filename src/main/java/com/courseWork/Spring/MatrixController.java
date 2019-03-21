@@ -3,9 +3,9 @@ package com.courseWork.Spring;
 import com.courseWork.interfaces.CalculationMatrix;
 import com.courseWork.model.OperandsForExponent;
 import com.courseWork.model.OperandMatrix;
-import com.courseWork.model.OperandsForMultiplicationOnVector;
+import com.courseWork.model.OperandsForMultiplicationByVector;
 import com.courseWork.model.OperandsTwoMatrices;
-import com.courseWork.model.OperandForMultiplicationOnNumber;
+import com.courseWork.model.OperandForMultiplicationByNumber;
 import com.courseWork.model.OperandForDeterminant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +46,7 @@ public class MatrixController {
     }
 
     @RequestMapping(value = "/multiplicationByNumber", method = RequestMethod.POST, consumes = "application/json")
-    public Double[][] matrixMultiplicationByNumber(@RequestBody OperandForMultiplicationOnNumber operand) {
+    public Double[][] matrixMultiplicationByNumber(@RequestBody OperandForMultiplicationByNumber operand) {
         return matrix.multiplicationByNumber(operand.getFirstMatrix(), operand.getMultiplier());
     }
 
@@ -56,7 +56,7 @@ public class MatrixController {
     }
 
     @RequestMapping(value = "/multiplicationByVector", method = RequestMethod.POST, consumes = "application/json")
-    public Double[] matrixMultiplicationByVector(@RequestBody OperandsForMultiplicationOnVector operand) {
+    public Double[] matrixMultiplicationByVector(@RequestBody OperandsForMultiplicationByVector operand) {
         return matrix.multiplicationByVector(operand.getFirstMatrix(), operand.getVector());
     }
 

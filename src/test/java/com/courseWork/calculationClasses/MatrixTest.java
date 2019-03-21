@@ -3,25 +3,21 @@ package com.courseWork.calculationClasses;
 import com.courseWork.exeptions.IllegalSizeExeption;
 import com.courseWork.interfaces.CalculationMatrix;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
 
 class MatrixTest {
-    @Mock
-    CalculationMatrix matrix = mock(Matrix.class);
+
+    CalculationMatrix matrix = new Matrix();
 
     @Test
     void testPlus() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
         final Double[][] second = {{5.0, 6.0}, {7.0, 8.0}};
         final Double[][] third = {{6.0, 8.0}, {10.0, 12.0}};
-        when(matrix.plus(first,second)).thenReturn(third);
         final Double[][] result = matrix.plus(first, second);
-        verify(matrix).minus(first,second);
         assertArrayEquals(result, third);
     }
 
@@ -53,7 +49,7 @@ class MatrixTest {
     @Test
     void testLegalSizeMatrix() {
         final Double[][] first = {{1.0, 2.0,}, {3.0, 4.0}};
-        final Double[][] second = {{5.0, 6.0}, {7.0, 8.0}};
+        final Double[][] second = {{5.0, 6.0}};
 
         assertThrows(IllegalSizeExeption.class, () -> matrix.multiplication(first, second));
     }
@@ -85,8 +81,8 @@ class MatrixTest {
 
     @Test
     void testDeterminate() {
-        final Double[][] first = {{1.0, 2.0,3.0}, {4.0, 5.0,6.0},{7.0,8.0,9.0}};
-        final Double result = matrix.determinate(first,3);
+        final Double[][] first = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        final Double result = matrix.determinate(first, 3);
         assertEquals(-2.0, result.doubleValue());
 
     }
@@ -108,11 +104,4 @@ class MatrixTest {
         final Double[] result = matrix.multiplicationByVector(first, second);
         assertArrayEquals(result, third);
     }
-    @Test
-    void testPR(){
-        Matrix matrix1 = mock(Matrix.class);
-        when(matrix1.pr()).thenReturn(1);
-        assertEquals(2,matrix1.pr());
-    }
-
 }

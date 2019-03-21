@@ -161,7 +161,6 @@ public class Matrix implements CalculationMatrix {
         }
         return buffer;
     }
-    @Override
-    public int pr(){return 2;}
+
 }
 

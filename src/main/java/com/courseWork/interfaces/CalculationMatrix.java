@@ -19,6 +19,4 @@ public interface CalculationMatrix {
     Double[][] revers(Double[][] matrix);
 
     Double[] multiplicationByVector(Double[][] matrix, Double[] vector);
-    int pr();
-
 }
